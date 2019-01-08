@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    p #{message}
+    h1= user.name
+    h2= user.phone
+    fieldset
+        legend WALLET
+        label(for="total") Total Amount
+            br
+            h2= user.total
+        form(action="/wallet/add_money/"+user._id, method="post")
+            label(for="addm") Add Money (in Rs.)
+            input(type="number", name="addm", placeholder="Enter some amount")
+            br
+            input(type="submit" value="Add")
+        form(action="/wallet/send_money/"+user._id, method="post")
+            label(for="sendm") Send Money (in Rs.)
+            input(type="number", name="sendm", placeholder="Enter some amount")
+            br
+            if errors
+                if errors.sendm
+                    p #{errors.sendm.msg}
+            br
+            input(type="submit" value="Send")
+    hr
+    a(href="/users/user/edit/"+user._id)
+        button EDIT
+    |  
+    a(href="/users/user/delete/"+user._id)
+        button DELETE
+    br
+    hr
+    a(href="/users/logout")
+        button LOG OUT

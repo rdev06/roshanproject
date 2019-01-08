@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    p #{message}
+    form(action="/users/add", method="post")
+        fieldset
+            legend Register/Add
+            label(for="name") Name
+            br
+            input(type="text" name="name" placeholder="Enter your Name")
+            if errors
+                if errors.name
+                    p #{errors.name.msg}
+            br
+            label(for="email") Email
+            br
+            input(type="email" name="email" placeholder="Enter your Email")
+            if errors
+                if errors.email
+                    p #{errors.email.msg}
+            br
+            label(for="password") Password
+            br
+            input(type="password" name="password" placeholder="Make new password")
+            if errors
+                if errors.password
+                    p #{errors.password.msg}
+            br
+            label(for="rpassword") Re enter password
+            br
+            input(type="password" name="rpassword" placeholder="Confirm your password")
+            if errors
+                if errors.rpassword
+                    p #{errors.rpassword.msg}
+            br
+            label(for="phone") Phone
+            br
+            input(type="number" name="phone" placeholder="Enter your Phone number")
+            if errors
+                if errors.phone
+                    p #{errors.phone.msg}
+            br
+            input(type="submit" value="Sign Up")
+            |  
+            input(type="reset" value="Clear")

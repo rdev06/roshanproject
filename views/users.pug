@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 User page
+    p #{message}
+    ul
+        each user,i in users
+            li
+                a(href="/users/user/"+user._id)= (i+1)+". "+user.name
+    a(href="/users/add")
+        button ADD

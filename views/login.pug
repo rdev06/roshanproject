@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    p #{message}
+    form(action="/users/login/", method="post")
+        fieldset
+            legend LOG IN
+            label(for="email") Email
+            br
+            input(type="email" name="email" placeholder="Enter your Email")
+            if errors
+                if errors.email
+                    p #{errors.email.msg}
+            br
+            label(for="password") Password
+            br
+            input(type="password" name="password" placeholder="Enter your password")
+            if errors
+                if errors.password
+                    p #{errors.password.msg}
+            br
+            br
+            input(type="submit" value="login")
+            br
+    h5 Or if you dont have an account with us consider registring by Sign Up button
+    br
+    a(href="/users/add")
+        button SIGN UP
